@@ -2,6 +2,8 @@
 import tgl
 import pprint
 from functools import partial
+from colors import TC
+
 
 
 our_id = 0
@@ -48,7 +50,7 @@ def on_msg_receive(msg):
     #pp.pprint(msg)
     #print(msg.text)
     if msg.text.startswith("!ping"):
-      peer.send_msg("PONG!")
+      peer.send_msg(TC.IBlue+"PONG!"+TC.Rst)
 
 
 def on_secret_chat_update(peer, types):
