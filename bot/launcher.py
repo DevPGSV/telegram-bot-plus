@@ -2,7 +2,7 @@
 import tgl
 import pprint
 from functools import partial
-from colors import TC
+from TC import TC as TC # And TC again
 
 
 
