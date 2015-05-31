@@ -43,6 +43,7 @@ class logger:
       output = output + TC.IGreen + " <> " + TC.Rst
     else:
       output = output + TC.IGreen + " <<< " + TC.ICyan + msg.src.username + TC.Rst
+    output = output+TC.Rst+": "
     #output = output + TC.ICyan + msg.src.username + TC.Rst
     # if msg.dest.type_name == "user" and msg.src.type_name == "user":
       # if msg.out:
@@ -59,7 +60,7 @@ class logger:
       output = output+TC.IPurple+"[reply "+TC.ICyan+str(msg.reply.src.username)+TC.Rst+": "+TC.Yellow+utils.msgGetSummary(msg.reply, 10)+TC.IPurple+"]"+TC.Rst
     elif getattr(msg, "reply_id", None) is not None:
       output = output+TC.IPurple+"[reply "+TC.ICyan+str(msg.reply_id)+TC.IPurple+"]"+TC.Rst
-    output = output+TC.Rst+": "+TC.IYellow+utils.msgGetSummary(msg, 0)+TC.Rst
+    output = output+TC.IYellow+utils.msgGetSummary(msg, 0)+TC.Rst
     
     self.log(self.info, output)
     return

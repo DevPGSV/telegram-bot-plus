@@ -13,15 +13,18 @@ from TC import TC as TC # And TC again
 our_id = 0
 pp = pprint.PrettyPrinter(indent=4)
 syncFinished = False
+binlog_done = False
 
 def on_binlog_replay_end():
-  global syncFinished
+  global binlog_done
   print("SYNC!!!")
-  syncFinished = True
-  _TC_OUTPUT_TEST()
+  binlog_done = True
+  #_TC_OUTPUT_TEST()
   return
 
 def on_get_difference_end():
+  global syncFinished
+  syncFinished = True
   return
 
 def on_our_id(id):
@@ -46,9 +49,9 @@ def cb(success):
   print(success)
 
 def on_msg_receive(msg):
-  if not syncFinished:
-    print ("RET - 1")
-    return;
+  # if not syncFinished:
+    # print ("RET - 1")
+    # return;
   #pp.pprint(utils.msg2dict(msg))
   logger.msg(msg)
   if msg.dest.id == our_id: # direct message
