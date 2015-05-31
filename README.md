@@ -14,3 +14,9 @@ cd telegram-bot-plus
 ./setup.sh
 ./launch.sh # Will ask you for a phone number & confirmation code.
 ```
+
+For a better experience, start the bot with this command:
+
+```bash
+./launch.sh -D -R
+```
