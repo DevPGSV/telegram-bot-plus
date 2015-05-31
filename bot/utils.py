@@ -2,19 +2,28 @@
 
 from inspect import getmembers
 import tgl
+import pprint
+pp = pprint.PrettyPrinter(indent=4)
 
-def msg2dict(obj):
+def msg2dict(obj, rec = 3):
   dict = {}
+  if not type(obj) == tgl.Msg:
+    return dict
   for k,v in [(x, getattr(obj, x)) for x in dir(obj) if not x.startswith('__')]:
     if not str(type(v)) == "<type 'builtin_function_or_method'>":
+      #print(k)
       if type(v) == tgl.Peer:
-        dict[k] = peer2dict(v)
+        dict[k] = peer2dict(v, rec - 1)
+      elif type(v) == tgl.Msg and rec > 0:
+        dict[k] = msg2dict(v, rec - 1)
       else:
         dict[k] = v
   return dict
 
-def peer2dict(peer):
+def peer2dict(peer, rec = 3):
   dict = {}
+  if not type(peer) == tgl.Peer:
+    return dict
   peerAttr = dir(peer)
   for x in peerAttr:
     if not x.startswith('__'):
@@ -35,3 +44,13 @@ def peer2dict(peer):
       else:
         dict[x] = "unknown"
   return dict
+
+def msgGetSummary(msg, truncate = 0):
+  if getattr(msg, "text", None) is not None:
+    return (msg.text[:truncate] + '...') if (len(msg.text) > truncate and truncate is not 0) else msg.text
+  elif getattr(msg, "media", None) is not None:
+    return "Media: " + str(msg.media["type"])
+  elif getattr(msg, "service", None) is not None and msg.service:
+    return "Service"
+  else:
+    return ":O"
