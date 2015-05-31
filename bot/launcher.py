@@ -2,28 +2,31 @@
 import tgl
 import pprint
 from functools import partial
-from TC import TC as TC # And TC again
-
-
+from logger import logger
+logger = logger()
+import utils
+import traceback
+import sys
+#from TC import TC as TC # And TC again
 
 our_id = 0
 pp = pprint.PrettyPrinter(indent=4)
-
-binlog_done = False;
+syncFinished = False
 
 def on_binlog_replay_end():
-    binlog_done = True;
+  syncFinished = True
+  return
 
 def on_get_difference_end():
-    return
+  return
 
 def on_our_id(id):
-    our_id = id
-    return "Set ID: " + str(our_id)
+  our_id = id
+  return
 
 def msg_cb(success, msg):
-    pp.pprint(success)
-    pp.pprint(msg)
+  pp.pprint(success)
+  pp.pprint(msg)
 
 HISTORY_QUERY_SIZE = 100
 
@@ -32,35 +35,33 @@ def history_cb(msg_list, peer, success, msgs):
   msg_list.extend(msgs)
   print(len(msg_list))
   if len(msgs) == HISTORY_QUERY_SIZE:
-    tgl.get_history(peer, len(msg_list), HISTORY_QUERY_SIZE, partial(history_cb, msg_list, peer));
+    tgl.get_history(peer, len(msg_list), HISTORY_QUERY_SIZE, partial(history_cb, msg_list, peer))
 
 
 def cb(success):
-    print(success)
+  print(success)
 
 def on_msg_receive(msg):
-    if msg.out and not binlog_done:
-      return;
-
-    if msg.dest.id == our_id: # direct message
-      peer = msg.src
-    else: # chatroom
-      peer = msg.dest
-
-    #pp.pprint(msg)
-    #print(msg.text)
-    if msg.text.startswith("!ping"):
-      peer.send_msg(TC.IBlue+"PONG!"+TC.Rst)
-
+  if not syncFinished:
+    print ("RET - 1")
+    return;
+  pp.pprint(utils.msg2dict(msg))
+  if msg.dest.id == our_id: # direct message
+    peer = msg.src
+  else: # chatroom
+    peer = msg.dest
+  if msg.text.startswith("!ping"):
+    peer.send_msg("PONG!")
+  return
 
 def on_secret_chat_update(peer, types):
-    return "on_secret_chat_update"
+  return "on_secret_chat_update"
 
 def on_user_update(peer, what_changed):
-    return
+  return
 
 def on_chat_update(peer, what_changed):
-    return
+  return
 
 # Set callbacks
 tgl.set_on_binlog_replay_end(on_binlog_replay_end)
