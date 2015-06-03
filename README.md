@@ -21,12 +21,25 @@ If you want to call tg-cli with parameters, add them after ./launch. If you have
 ./launch.sh -p profileName
 ```
 
+To select a port:
+
+```bash
+./launch.sh -P <port>
+```
+
 
 [Emoji cheatsheet](http://www.emoji-cheat-sheet.com/)
 
 Open port in terminal:
 
 ```bash
-nc -v localhost 8080
+nc -v localhost <port>
+main_session
+```
+
+Open socket in terminal:
+```bash
+sudo apt-get install socat # Run this if socat is not installed
+socat - UNIX-CONNECT:/tmp/tgbp.sck
 main_session
 ```
