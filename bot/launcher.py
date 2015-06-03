@@ -9,7 +9,7 @@ import traceback
 import sys
 from TC import TC as TC # And TC again
 import emoji
-#from TC import TC as TC # And TC again
+import pluginManager as plugins
 
 our_id = 0
 pp = pprint.PrettyPrinter(indent=4)
