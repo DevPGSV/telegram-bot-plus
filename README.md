@@ -20,3 +20,6 @@ For a better experience, start the bot with this command:
 ```bash
 ./launch.sh -D -R
 ```
+
+
+[Emoji cheatsheet](http://www.emoji-cheat-sheet.com/=
