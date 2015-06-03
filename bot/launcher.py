@@ -8,6 +8,7 @@ import utils
 import traceback
 import sys
 from TC import TC as TC # And TC again
+import emoji
 #from TC import TC as TC # And TC again
 
 our_id = 0
@@ -19,12 +20,13 @@ def on_binlog_replay_end():
   global binlog_done
   print("SYNC!!!")
   binlog_done = True
-  #_TC_OUTPUT_TEST()
+  _TC_OUTPUT_TEST()
   return
 
 def on_get_difference_end():
   global syncFinished
   syncFinished = True
+  _TC_OUTPUT_TEST
   return
 
 def on_our_id(id):
@@ -60,6 +62,7 @@ def on_msg_receive(msg):
     peer = msg.dest
   if msg.text is not None and msg.text.startswith("!ping"):
     peer.send_msg("PONG!")
+    peer.send_msg("Emojis: \n" + emoji.emojize(':white_check_mark:').encode('UTF-8'))
   return
 
 def on_secret_chat_update(peer, types):
@@ -92,4 +95,7 @@ def _TC_OUTPUT_TEST():
   logger.log(logger.debug, "   CLARO : "+TC.OnIBlack+"negro "+TC.OnIRed+"rojo "+TC.OnIGreen+"verde "+TC.OnIYellow+"amarillo "+TC.OnIBlue+"azul "+TC.OnIPurple+"morado "+TC.OnICyan+"cyan "+TC.OnIWhite+"blanco")
   logger.log(logger.debug, " Estilos:")
   logger.log(logger.debug, "   "+TC.Rst+TC.Bold+"Bold "+TC.Rst+TC.Undr+"Undr "+TC.Rst+TC.Inv+"Inv "+TC.Rst+TC.Reg+"Reg "+TC.Rst+TC.RegF+"RegF "+TC.Rst+TC.RegB+"RegB")
+  logger.log(logger.debug, " Emoji:")
+  logger.log(logger.debug, emoji.emojize('   :bowtie: :smile: :laughing: :blush: :smiley: :x: :white_check_mark: :heavy_check_mark:'))
+  print(sys.version_info)
   return

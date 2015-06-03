@@ -15,6 +15,7 @@ install() {
     exit $RET
   fi
   cd ..
+  pip install emoji
 }
 
 update() {
