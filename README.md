@@ -1,13 +1,9 @@
-telegram-bot-plus
-=================
-
-## Build Status
+## Telegram Bot Plus
 
 Master: [![Build Status](https://travis-ci.org/DevPGSV/telegram-bot-plus.svg?branch=master)](https://travis-ci.org/DevPGSV/telegram-bot-plus)
 Devel: [![Build Status](https://travis-ci.org/DevPGSV/telegram-bot-plus.svg?branch=devel)](https://travis-ci.org/DevPGSV/telegram-bot-plus)
 
-Installation
-------------
+## Installation
 
 Debian:
 
@@ -20,6 +16,7 @@ cd telegram-bot-plus
 ./launch.sh # Will ask you for a phone number & confirmation code.
 ```
 
+## Usage
 If you want to call tg-cli with parameters, add them after ./launch. If you have profiles:
 
 ```bash
@@ -32,6 +29,7 @@ To select a port:
 ./launch.sh -P <port>
 ```
 
+## Connect to tg-cli
 
 Open port in terminal:
 
@@ -47,4 +45,5 @@ socat - UNIX-CONNECT:/tmp/tgbp.sck
 main_session
 ```
 
+## Emoji CheatSheet
 [Emoji cheatsheet](http://www.emoji-cheat-sheet.com/)
