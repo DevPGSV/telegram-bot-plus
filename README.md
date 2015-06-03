@@ -23,3 +23,9 @@ For a better experience, start the bot with this command:
 
 
 [Emoji cheatsheet](http://www.emoji-cheat-sheet.com/)
+
+Open port in terminal:
+
+```bash
+nc -v localhost 8080
+```
