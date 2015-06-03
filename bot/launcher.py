@@ -18,13 +18,14 @@ binlog_done = False
 
 def on_binlog_replay_end():
     global binlog_done
-    print("SYNC!!!")
+    logger.log(logger.debug, "binlog!!!")
     binlog_done = True
     _TC_OUTPUT_TEST()
     return
 
 def on_get_difference_end():
     global syncFinished
+    logger.log(logger.debug, "--------- END SYNC ---------")
     syncFinished = True
     _TC_OUTPUT_TEST
     return
@@ -51,9 +52,9 @@ def cb(success):
     print(success)
 
 def on_msg_receive(msg):
-    if not syncFinished:
-        print ("RET - 1")
-        return;
+    #if not syncFinished:
+    #    print ("RET - 1")
+    #    return;
     #pp.pprint(utils.msg2dict(msg))
     logger.msg(msg)
     if msg.dest.id == our_id: # direct message
@@ -98,5 +99,5 @@ def _TC_OUTPUT_TEST():
     logger.log(logger.debug, "   "+TC.Rst+TC.Bold+"Bold "+TC.Rst+TC.Undr+"Undr "+TC.Rst+TC.Inv+"Inv "+TC.Rst+TC.Reg+"Reg "+TC.Rst+TC.RegF+"RegF "+TC.Rst+TC.RegB+"RegB")
     logger.log(logger.debug, " Emoji:")
     logger.log(logger.debug, emoji.emojize('   :white_check_mark: :smile: :laughing: :blush: :smiley: :x: :heavy_check_mark:', use_aliases=True))
-    print(sys.version_info)
+    logger.log(logger.debug, str(sys.version_info))
     return
