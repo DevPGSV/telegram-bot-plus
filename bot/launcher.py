@@ -97,7 +97,5 @@ def _TC_OUTPUT_TEST():
     logger.log(logger.debug, "   CLARO : "+TC.OnIBlack+"negro "+TC.OnIRed+"rojo "+TC.OnIGreen+"verde "+TC.OnIYellow+"amarillo "+TC.OnIBlue+"azul "+TC.OnIPurple+"morado "+TC.OnICyan+"cyan "+TC.OnIWhite+"blanco")
     logger.log(logger.debug, " Estilos:")
     logger.log(logger.debug, "   "+TC.Rst+TC.Bold+"Bold "+TC.Rst+TC.Undr+"Undr "+TC.Rst+TC.Inv+"Inv "+TC.Rst+TC.Reg+"Reg "+TC.Rst+TC.RegF+"RegF "+TC.Rst+TC.RegB+"RegB")
-    logger.log(logger.debug, " Emoji:")
-    logger.log(logger.debug, emoji.emojize('   :white_check_mark: :smile: :laughing: :blush: :smiley: :x: :heavy_check_mark:', use_aliases=True))
     logger.log(logger.debug, str(sys.version_info))
     return
