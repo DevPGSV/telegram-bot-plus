@@ -62,7 +62,8 @@ def on_msg_receive(msg):
     peer = msg.dest
   if msg.text is not None and msg.text.startswith("!ping"):
     peer.send_msg("PONG!")
-    peer.send_msg("Emojis: \n" + emoji.emojize(':white_check_mark:').encode('UTF-8'))
+  elif msg.text is not None and msg.text.startswith("!emoji"):
+    peer.send_msg("Emojis: \n" + emoji.emojize(':white_check_mark: :smile: :laughing: :blush: :smiley: :x: :heavy_check_mark:', use_aliases=True).encode('UTF-8'))
   return
 
 def on_secret_chat_update(peer, types):
@@ -96,6 +97,6 @@ def _TC_OUTPUT_TEST():
   logger.log(logger.debug, " Estilos:")
   logger.log(logger.debug, "   "+TC.Rst+TC.Bold+"Bold "+TC.Rst+TC.Undr+"Undr "+TC.Rst+TC.Inv+"Inv "+TC.Rst+TC.Reg+"Reg "+TC.Rst+TC.RegF+"RegF "+TC.Rst+TC.RegB+"RegB")
   logger.log(logger.debug, " Emoji:")
-  logger.log(logger.debug, emoji.emojize('   :bowtie: :smile: :laughing: :blush: :smiley: :x: :white_check_mark: :heavy_check_mark:'))
+  logger.log(logger.debug, emoji.emojize('   :white_check_mark: :smile: :laughing: :blush: :smiley: :x: :heavy_check_mark:', use_aliases=True))
   print(sys.version_info)
   return
