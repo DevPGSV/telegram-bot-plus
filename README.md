@@ -28,4 +28,5 @@ Open port in terminal:
 
 ```bash
 nc -v localhost 8080
+main_session
 ```
