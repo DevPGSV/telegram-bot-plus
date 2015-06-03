@@ -2,6 +2,10 @@ language: c
 compiler:
   - gcc
   - clang
+branches:
+  only:
+    - master
+    - devel
 install:
  - sudo apt-get install libconfig8-dev
  - sudo apt-get install libreadline6-dev
