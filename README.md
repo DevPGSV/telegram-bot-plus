@@ -15,10 +15,10 @@ cd telegram-bot-plus
 ./launch.sh # Will ask you for a phone number & confirmation code.
 ```
 
-For a better experience, start the bot with this command:
+If you want to call tg-cli with parameters, add them after ./launch. If you have profiles:
 
 ```bash
-./launch.sh -D -R
+./launch.sh -p profileName
 ```
 
 
