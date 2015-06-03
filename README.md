@@ -28,8 +28,6 @@ To select a port:
 ```
 
 
-[Emoji cheatsheet](http://www.emoji-cheat-sheet.com/)
-
 Open port in terminal:
 
 ```bash
@@ -43,3 +41,5 @@ sudo apt-get install socat # Run this if socat is not installed
 socat - UNIX-CONNECT:/tmp/tgbp.sck
 main_session
 ```
+
+[Emoji cheatsheet](http://www.emoji-cheat-sheet.com/)
