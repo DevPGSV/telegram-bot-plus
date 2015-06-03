@@ -61,7 +61,7 @@ class logger:
         elif getattr(msg, "reply_id", None) is not None:
             output = output+TC.IPurple+"[reply "+TC.ICyan+str(msg.reply_id)+TC.IPurple+"]"+TC.Rst
         output = output+TC.IYellow+utils.msgGetSummary(msg, 0)+TC.Rst
-        
+        output = output.replace('\n', ' ').replace('\r', '')
         self.log(self.info, output)
         return
     
