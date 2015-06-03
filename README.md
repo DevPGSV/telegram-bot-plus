@@ -1,6 +1,7 @@
 ## Telegram Bot Plus
 
 Master: [![Build Status](https://travis-ci.org/DevPGSV/telegram-bot-plus.svg?branch=master)](https://travis-ci.org/DevPGSV/telegram-bot-plus)
+
 Devel: [![Build Status](https://travis-ci.org/DevPGSV/telegram-bot-plus.svg?branch=devel)](https://travis-ci.org/DevPGSV/telegram-bot-plus)
 
 ## Installation
