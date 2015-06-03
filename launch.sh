@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+cd $(cd $(dirname $0); pwd)
+
 if [ ! -f ./tg/telegram.h ]; then
   echo "tg not found"
   echo "Run $0 install"
