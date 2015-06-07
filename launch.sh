@@ -14,4 +14,7 @@ if [ ! -f ./tg/bin/telegram-cli ]; then
 fi
 
 #fuser 8080/tcp && (echo "Port is being used"; exit 1;)
+if [ -f /tmp/tgbp.sck ]; then
+  rm /tmp/tgbp.sck
+fi
 ./tg/bin/telegram-cli -k ./tg/tg-server.pub -Z ./bot/launcher.py -W -l 0 -D -R -S /tmp/tgbp.sck --json $@
