@@ -6,6 +6,8 @@ branches:
   only:
     - master
     - devel
+before_install:
+ - chmod a+x ./tests/tgLaunch_python.sh
 install:
  - sudo apt-get install libconfig8-dev
  - sudo apt-get install libreadline6-dev
