@@ -15,6 +15,8 @@ install:
  - sudo apt-get install libevent-dev
  - sudo apt-get install libjansson-dev
  - sudo apt-get install python-pip
+ - sudo apt-get install socat
  - sudo pip install emoji
 script:
   - ./setup.sh
+  - ./tests/tgLaunch_python.sh
